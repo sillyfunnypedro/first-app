@@ -11,14 +11,28 @@ function App() {
   const [count1, setCount1] = React.useState(0);
   const [count2, setCount2] = React.useState(0);
   const [count3, setCount3] = React.useState(0);
+  const [total, setTotal] = React.useState(0);
+
+  let newCount1 = count1;
+  let newCount2 = count2;
+  let newCount3 = count3;
+
+  function computeTotal() {
+    setTotal(newCount1 * 9 + newCount1 * 3 + newCount3);
+  }
 
   function addOneToCount1() {
-    if (count1 < 2) {
-      setCount1(count1 + 1);
+
+
+    if (newCount1 < 2) {
+      newCount1 += 1;
     } else {
-      setCount1(0);
+      newCount1 = 0;
     }
+    setCount1(newCount1);
+    computeTotal();
   }
+
 
   function addOneToCount2() {
     if (count2 < 2) {
@@ -27,6 +41,7 @@ function App() {
       setCount2(0);
       addOneToCount1();
     }
+    computeTotal();
   }
 
   function addOneToCount3() {
@@ -36,6 +51,7 @@ function App() {
       setCount3(0);
       addOneToCount2();
     }
+    computeTotal();
   }
 
 
@@ -82,6 +98,9 @@ function App() {
         {count1}
         {count2}
         {count3}
+        <br>
+        </br>
+        Total: {total}
 
         <Buttons onButtonClicked={printButtonName} />
       </header>
