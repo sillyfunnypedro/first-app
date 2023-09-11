@@ -12,18 +12,45 @@ function App() {
   const [count2, setCount2] = React.useState(0);
   const [count3, setCount3] = React.useState(0);
 
+  function addOneToCount1() {
+    if (count1 < 2) {
+      setCount1(count1 + 1);
+    } else {
+      setCount1(0);
+    }
+  }
+
+  function addOneToCount2() {
+    if (count2 < 2) {
+      setCount2(count2 + 1);
+    } else {
+      setCount2(0);
+      addOneToCount1();
+    }
+  }
+
+  function addOneToCount3() {
+    if (count3 < 2) {
+      setCount3(count3 + 1);
+    } else {
+      setCount3(0);
+      addOneToCount2();
+    }
+  }
+
+
 
   function printButtonName(buttonName: string) {
     console.log(buttonName);
     switch (buttonName) {
       case 'button1':
-        setCount1(count1 + 1);
+        addOneToCount1();
         break;
       case 'button2':
-        setCount2(count2 + 1);
+        addOneToCount2();
         break;
       case 'button3':
-        setCount3(count3 + 1);
+        addOneToCount3();
         break;
       default:
     }
