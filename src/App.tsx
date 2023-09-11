@@ -18,7 +18,7 @@ function App() {
   let newCount3 = count3;
 
   function computeTotal() {
-    setTotal(newCount1 * 9 + newCount1 * 3 + newCount3);
+    setTotal(newCount1 * 9 + newCount2 * 3 + newCount3);
   }
 
   function addOneToCount1() {
@@ -35,22 +35,24 @@ function App() {
 
 
   function addOneToCount2() {
-    if (count2 < 2) {
-      setCount2(count2 + 1);
+    if (newCount2 < 2) {
+      newCount2 += 1;
     } else {
-      setCount2(0);
+      newCount2 = 0;
       addOneToCount1();
     }
+    setCount2(newCount2);
     computeTotal();
   }
 
   function addOneToCount3() {
-    if (count3 < 2) {
-      setCount3(count3 + 1);
+    if (newCount3 < 2) {
+      newCount3 += 1;
     } else {
-      setCount3(0);
+      newCount3 = 0;
       addOneToCount2();
     }
+    setCount3(newCount3);
     computeTotal();
   }
 
